@@ -1,0 +1,52 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-4 offset-md-4 text-center'>
+            <img src="/assets/images/burger.png" alt="burger-image" height="200px" width="200px">
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-6 text-center offset-md-3'>
+            <h1>Click on a burger card to consume it!</h1>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-2 offset-md-3 text-center'>
+            {{#each burgers}}
+            {{#unless this.devoured}}
+            <div class='card'>
+                <div class="card-body burger-item" id={{this.id}}>
+                    {{this.id}}. {{this.burger_name}}
+                </div>
+            </div>
+            {{/unless}}
+            {{/each}}
+        </div>
+        <div class='col-md-2'>
+        </div>
+        <div class='col-md-2 text-center'>
+            {{#each burgers}}
+            {{#if this.devoured}}
+            <div class='card'>
+                <div class="card-body burger-item" id={{this.id}}>
+                    {{this.id}}. {{this.burger_name}}
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    <div class='row mt-5'>
+        <form class='col-md-4 offset-md-4 text-center' action="/burgers/create" method="POST">
+            <input type='text' name='burgerName'>
+            <input type='submit' value='Submit'>
+        </form>
+    </div>
+</div>
+
+{{!-- <ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+    <li>{{burger_name}}</li>
+    {{/unless}}
+  {{/each}}
+</ul> --}}
